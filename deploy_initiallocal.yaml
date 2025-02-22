@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: initiallocalapp
+  labels:
+    name: initiallocalapp
+spec:
+  containers:
+  - name: initialapp
+    image: bank-service-registry
+    imagePullPolicy: IfNotPresent
+    ports:
+      - containerPort: 8085

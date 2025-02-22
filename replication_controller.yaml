@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: replication-controller-demo
+spec:
+  replicas: 2
+  selector:
+    app: replication-controller-demo
+  template:
+    metadata:
+      name: replication-controller-demo
+      labels:
+        app: replication-controller-demo
+    spec:
+      containers:
+        - name: replication-controller-demo
+          image: prithwi8972/bank-service-registry:1.0
+          ports:
+            - containerPort: 8085
