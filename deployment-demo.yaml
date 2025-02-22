@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deployment-demo
+  template:
+    metadata:
+      labels:
+        app: deployment-demo
+    spec:
+      containers:
+      - name: deployment-demo
+        image: prithwi8972/bank-service-registry:1.0
+        ports:
+        - containerPort: 8085

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replicaset-demo
+spec:
+  replicas: 3
+  selector:
+    matchExpressions:
+      - {key: initial, operator: In, values: [kubernetes, k8s]}
+      - {key: env, operator: NotIn, values: [production]}
+  template:
+    metadata:
+      name: replicaset-demo
+      labels:
+        initial: k8s
+    spec:
+      containers:
+        - name: replication-controller-demo
+          image: prithwi8972/bank-service-registry:1.0
+          ports:
+            - containerPort: 8085
