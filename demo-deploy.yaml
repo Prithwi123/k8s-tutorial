@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-registry-deploy
+  labels:
+    name: service-registry-deploy
+    app: banking-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: service-registry-deploy
+      app: banking-system
+  template:
+    metadata:
+      labels:
+        name: service-registry-deploy
+        app: banking-system
+    spec:
+      containers:
+      - name: deployment-demo
+        image: prithwi8972/bank-service-registry:1.0
+        resources:
+          limits:
+            memory: "900Mi"
+            cpu: 400m
+          requests:
+            memory: "600Mi"
+            cpu: 200m
+        ports:
+        - containerPort: 8085
